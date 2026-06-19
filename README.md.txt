@@ -24,6 +24,6 @@ I also added unique constraints on membershipNumber and isbn:
 - Membership to uniquely identify each library members;
 - isbn to uniquely identify each catalog item;
 
-To keep project organized I implemented DAO pattern. Each entity has it's own DAO responsible for interactions with the 
+To keep project organized I implemented DAO pattern. Each entity has its own DAO responsible for interactions with the
 DB and executing queries.
  
