@@ -4,8 +4,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
-import java.util.List;
-
 @Entity
 @Table(name = "books")
 public class Book extends Catalog {
@@ -18,8 +16,8 @@ public class Book extends Catalog {
     public Book() {
     }
 
-    public Book(String isbn, String title, int publicationYear, int pages, List<Loan> loans, String author, String genre) {
-        super(isbn, title, publicationYear, pages, loans);
+    public Book(String isbn, String title, int publicationYear, int pages, String author, String genre) {
+        super(isbn, title, publicationYear, pages);
         this.author = author;
         this.genre = genre;
     }

@@ -12,12 +12,13 @@ import java.util.UUID;
 public class User {
     @Id
     @GeneratedValue
+    @Column(name = "user_id")
     private UUID id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "surname")
+    @Column(name = "surname", nullable = false)
     private String surname;
 
     @Column(name = "birth_date")

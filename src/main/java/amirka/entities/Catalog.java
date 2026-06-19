@@ -12,18 +12,19 @@ import java.util.UUID;
 public abstract class Catalog {
     @Id
     @GeneratedValue
+    @Column(name = "catalog_id")
     private UUID id;
 
     @Column(name = "isbn", unique = true, nullable = false)
     private String isbn;
 
-    @Column(name = "title")
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "publication_year")
+    @Column(name = "publication_year", nullable = false)
     private int publicationYear;
 
-    @Column(name = "pages")
+    @Column(name = "pages", nullable = false)
     private int pages;
 
     @OneToMany(mappedBy = "catalog")
