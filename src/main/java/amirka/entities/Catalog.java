@@ -26,18 +26,17 @@ public abstract class Catalog {
     @Column(name = "pages")
     private int pages;
 
-    @OneToMany(mappedBy = "catalog_id")
+    @OneToMany(mappedBy = "catalog")
     private List<Loan> loans = new ArrayList<>();
 
     public Catalog() {
     }
 
-    public Catalog(String isbn, String title, int publicationYear, int pages, List<Loan> loans) {
+    public Catalog(String isbn, String title, int publicationYear, int pages) {
         this.isbn = isbn;
         this.title = title;
         this.publicationYear = publicationYear;
         this.pages = pages;
-        this.loans = loans;
     }
 
     public UUID getId() {
@@ -72,7 +71,6 @@ public abstract class Catalog {
                 ", title='" + title + '\'' +
                 ", publicationYear=" + publicationYear +
                 ", pages=" + pages +
-                ", loans=" + loans +
                 '}';
     }
 }
