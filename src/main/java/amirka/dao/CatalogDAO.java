@@ -2,8 +2,10 @@ package amirka.dao;
 
 import amirka.entities.Book;
 import amirka.entities.Catalog;
+import amirka.exceptions.NotFound;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
@@ -28,11 +30,15 @@ public class CatalogDAO {
     }
 
     public Catalog findByIsbn(String isbn) {
-        TypedQuery<Catalog> query = entityManager.createQuery("SELECT c FROM Catalog WHERE c.isbn=:isbn",
-                Catalog.class);
-        query.setParameter("isbn", isbn);
+        try {
+            TypedQuery<Catalog> query = entityManager.createQuery("SELECT c FROM Catalog c WHERE c.isbn=:isbn",
+                    Catalog.class);
+            query.setParameter("isbn", isbn);
 
-        return query.getSingleResult();
+            return query.getSingleResult();
+        } catch (NoResultException ex) {
+            throw new NotFound("No catalog found using:" + isbn);
+        }
     }
 
     public void deleteUsingIsbn(String isbn) {

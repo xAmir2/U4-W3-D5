@@ -48,6 +48,9 @@ public class Loan {
         return user;
     }
 
+    public void setUser(User u1) {
+    }
+
     public Catalog getCatalog() {
         return catalog;
     }

@@ -11,13 +11,16 @@ public class UserDAO {
         this.entityManager = em;
     }
 
-    public void save(User user) {
+    public void save(User newUser) {
         EntityTransaction transaction = entityManager.getTransaction();
 
         transaction.begin();
 
-        entityManager.persist(user);
+        entityManager.persist(newUser);
 
         transaction.commit();
+
+        System.out.println(newUser + "was successfully saved!");
+
     }
 }
